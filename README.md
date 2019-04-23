@@ -1,9 +1,9 @@
-# 4AIW3_mongodb
+# 4AIW3_mongodb : NODE JS 
 
-## MONGODB
+
+## Part 1 - MongoDb, manier, requêter
 
 [MongoDB Documentation](https://docs.mongodb.com/)
-
 
 - Se co `$ mongo -u root -p password`
 - Se co via docker `$ docker-compose exec mongo mongo -u root -p password`
@@ -102,4 +102,52 @@ db.video_movieDetails.aggregate([
     { _id: “$rated”, count: { $sum: 1 } 
   }
 }]);
+```
+
+## Part 2 - Un back en Node
+
+### Run le serveur : 
+- Verifier qu'on la bonne version de node : `$ docker-compose run server node --version`
+
+(Pour init un projet : `$ docker-compose run server npm init`)
+
+- Démarrer les containers : `$ docker compose up -d`
+- Start le projet : `$ docker-compose up server`
+
+retour attendu : 
+```
+Starting 4aiw3_mongodb_server_1 ... done
+Attaching to 4aiw3_mongodb_server_1
+server_1         | 
+server_1         | > app@1.0.0 start /home/node/app
+server_1         | > node app.js
+server_1         | 
+server_1         | In app.js
+server_1         | Connected to mongoose
+```
+
+#### Mongoose :
+
+- Connection : 
+```
+mongoose.connect(`mongodb://mongo`, {
+  user: process.env.MONGODB_USER,
+  pass: process.env.MONGODB_PASS,
+  dbName: process.env.MONGODB_DBNAME,
+  useNewUrlParser: true
+});
+```
+- Création d'un schema :
+```
+const MovieSchema = mongoose.Schema({
+  title: String,
+  createdAt: Date,
+  ...
+```
+Pour avoir des validation avec un type requis, des valeurs requise etc :
+```
+ lastName: {
+    type: String,
+    required: 'Last name is required',
+  },
 ```
