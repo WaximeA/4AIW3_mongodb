@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const db = require('./../lib/db');
 
 const MovieSchema = mongoose.Schema({
   title: String,
@@ -33,5 +34,5 @@ MovieSchema.post('save', function() {
 });
 
 // Model collection
-const Movie = mongoose.model('Movie', MovieSchema);
+const Movie = db.model('Movie', MovieSchema);
 module.exports = Movie;

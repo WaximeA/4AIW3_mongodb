@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcryptjs = require('bcryptjs');
+const db = require('./../lib/db');
 
 const UserSchema = mongoose.Schema({
   firstName: {
@@ -64,5 +65,5 @@ UserSchema.statics.login = function(email, password) {
   })
 }
 
-const User = mongoose.model('User', UserSchema);
+const User = db.model('User', UserSchema);
 module.exports = User;

@@ -65,14 +65,9 @@ const Movie = require('./models/movie');
 
 // *************** EXPRESS **************
 const express = require('express');
+const movieRouter = require('./routes/movie');
 const app = express();
 
-app.get('/hello', (req, res) => {
-  res.send('Hello you! :)')
-});
-
-app.post('/hello', (req, res) => {
-  res.send('I got it')
-});
+app.use('/movies', movieRouter);
 
 app.listen(3000, () => console.log('Listening'));
