@@ -6,7 +6,6 @@ const MovieSchema = mongoose.Schema({
   createdAt: Date,
   year: {
     type: Number,
-    required: true,
     min: 1900
   },
   category: {

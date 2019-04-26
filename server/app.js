@@ -70,7 +70,7 @@ const bodyparser = require('body-parser');
 
 const app = express();
 
-app.use(bodyparser);
+app.use(bodyparser.json());
 
 app.use('/movies', movieRouter);
 

@@ -111,7 +111,7 @@ db.video_movieDetails.aggregate([
 
 (Pour init un projet : `$ docker-compose run server npm init`)
 
-- Démarrer les containers : `$ docker compose up -d`
+- Démarrer les containers : `$ docker-compose up -d`
 - Start le projet : `$ docker-compose up server`
 
 retour attendu : 
@@ -151,3 +151,19 @@ Pour avoir des validation avec un type requis, des valeurs requise etc :
     required: 'Last name is required',
   },
 ```
+
+### Express :`
+
+```
+POST http://localhost:3000/movies
+Content-Type: application/json
+
+{
+    "title": "Movie 1",
+    "createdAt": "2019-01-01",
+    "year": "2019",
+    "category": "SF"
+}
+```
+
+![Postman post params](images/postman-post-params.png)
