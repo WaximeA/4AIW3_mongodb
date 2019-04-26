@@ -66,7 +66,11 @@ const Movie = require('./models/movie');
 // *************** EXPRESS **************
 const express = require('express');
 const movieRouter = require('./routes/movie');
+const bodyparser = require('body-parser');
+
 const app = express();
+
+app.use(bodyparser);
 
 app.use('/movies', movieRouter);
 
