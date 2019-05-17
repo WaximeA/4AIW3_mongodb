@@ -2,15 +2,17 @@ import React from "react";
 import TodoItem from "./TodoItem"
 
 class TodoList extends React.Component {
-  render() {
-    const todos = [
+  state = {
+    todos: [
       {text: "Todo 1"},
       {text: "Todo 2", checked: true}
     ]
+  }
 
+  render() {
     return <ul>
       {
-        todos.map((item, index) =>
+        this.state.todos.map((item, index) =>
             <TodoItem key={index} {...item}/>
         )
       }
