@@ -9,14 +9,26 @@ class TodoList extends React.Component {
     ]
   }
 
+  handleNew = () => {
+    const newTodo = {text: "new todo", checked: false};
+
+    // set new state to handle the rendering and add newTodo at the end of state
+    this.setState({
+      todos: [...this.state.todos, newTodo]
+    })
+  }
+
   render() {
-    return <ul>
-      {
-        this.state.todos.map((item, index) =>
-            <TodoItem key={index} {...item}/>
-        )
-      }
-    </ul>
+    return <>
+      <button onClick={this.handleNew}>{"Add item"}</button>
+      <ul>
+        {
+          this.state.todos.map((item, index) =>
+              <TodoItem key={index} {...item}/>
+          )
+        }
+      </ul>
+   </>;
   }
 }
 
