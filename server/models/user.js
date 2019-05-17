@@ -37,6 +37,7 @@ UserSchema.pre('save', function (next) {
   bcryptjs.genSalt(10).then(salt => {
     bcryptjs.hash(this.password, salt).then(hash => {
       this.password = hash;
+      next();
     });
   });
 });

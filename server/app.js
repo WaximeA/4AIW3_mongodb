@@ -65,13 +65,18 @@ const Movie = require('./models/movie');
 
 // *************** EXPRESS **************
 const express = require('express');
-const movieRouter = require('./routes/movie');
 const bodyparser = require('body-parser');
+// const verifyToken = require('./middlewares/security');
+
+const movieRouter = require('./routes/movie');
+const userRouter = require('./routes/user');
 
 const app = express();
 
 app.use(bodyparser.json());
+// app.use(verifyToken);
 
 app.use('/movies', movieRouter);
+app.use('/users', userRouter);
 
 app.listen(3000, () => console.log('Listening'));

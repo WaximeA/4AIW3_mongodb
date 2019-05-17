@@ -167,3 +167,10 @@ Content-Type: application/json
 ```
 
 ![Postman post params](images/postman-post-params.png)
+
+# Run l'app : 
+`$ docker-compose run server`
+
+# User
+
+![Postman register user](images/postman-register-user.png)
