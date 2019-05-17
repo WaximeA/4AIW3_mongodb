@@ -11,7 +11,7 @@ class TodoList extends React.Component {
     return <ul>
       {
         todos.map((item, index) =>
-            <TodoItem key={index} text={item.text} checked={item.checked}/>
+            <TodoItem key={index} {...item}/>
         )
       }
     </ul>
