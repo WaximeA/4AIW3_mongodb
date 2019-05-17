@@ -37,7 +37,7 @@ services:
   client:
       build: './client'
       volumes:
-        - './client:/home/node/app'
+        - './client:/home/node/app:rw,consistent'
       working_dir: '/home/node/app'
       command: 'yarn start'
       ports:
