@@ -1,5 +1,6 @@
 import React from "react";
 import TodoItem from "./TodoItem"
+import TodoForm from './TodoForm';
 
 class TodoList extends React.Component {
   state = {
@@ -9,8 +10,8 @@ class TodoList extends React.Component {
     ]
   }
 
-  handleNew = () => {
-    const newTodo = {text: "new todo", checked: false};
+  handleNew = (text) => {
+    const newTodo = {text, checked: false};
 
     // set new state to handle the rendering and add newTodo at the end of state
     this.setState({
@@ -20,7 +21,7 @@ class TodoList extends React.Component {
 
   render() {
     return <>
-      <button onClick={this.handleNew}>{"Add item"}</button>
+      <TodoForm onNew={this.handleNew}/>
       <ul>
         {
           this.state.todos.map((item, index) =>
