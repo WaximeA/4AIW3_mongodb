@@ -177,3 +177,5 @@ Content-Type: application/json
 
 # Run React :
 `$ npm run start`
+
+Install cors : `$  docker-compose exec client yarn add cors`

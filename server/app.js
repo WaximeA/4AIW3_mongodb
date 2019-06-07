@@ -65,6 +65,7 @@ const Movie = require('./models/movie');
 
 // *************** EXPRESS **************
 const express = require('express');
+const cors = require('cors');
 const bodyparser = require('body-parser');
 // const verifyToken = require('./middlewares/security');
 
@@ -73,6 +74,7 @@ const userRouter = require('./routes/user');
 
 const app = express();
 
+app.use(cors());
 app.use(bodyparser.json());
 // app.use(verifyToken);
 
