@@ -19,13 +19,25 @@ class TodoList extends React.Component {
     })
   }
 
+  handleSelect = (item) => {
+    this.setSate({
+      todos: this.state.map(todo => {
+        if (todo.text === item.text) {
+          todo.checked = !todo.checked;
+        }
+
+        return todo;
+      })
+    })
+  }
+
   render() {
     return <>
       <TodoForm onNew={this.handleNew}/>
       <ul>
         {
           this.state.todos.map((item, index) =>
-              <TodoItem key={index} {...item}/>
+              <TodoItem key={index} item={item} onSelect={this.handleSelect}/>
           )
         }
       </ul>

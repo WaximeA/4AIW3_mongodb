@@ -2,9 +2,11 @@ import React from "react";
 
 class TodoItem extends React.Component {
   render() {
+    const { item, onSelect, ...rest } = this.props;
+
     return <li style={{
-      opacity: this.props.checked ? 0.5 : 1
-    }}>{this.props.text}</li>
+      opacity: item.checked ? 0.5 : 1
+    }} onClick={() => onSelect(item)}>{item.text}</li>
   }
 }
 

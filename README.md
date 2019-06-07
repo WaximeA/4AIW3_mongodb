@@ -174,3 +174,6 @@ Content-Type: application/json
 # User
 
 ![Postman register user](images/postman-register-user.png)
+
+# Run React :
+`$ npm run start`
