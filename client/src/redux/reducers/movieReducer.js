@@ -9,6 +9,12 @@ const movieReducer = (state = {
         received: true
       };
     }
+    case "NEW_MOVIE_RECEIVED": {
+      return {
+        ...state,
+        movies: [...state.movies, action.payload.movie]
+      }
+    }
     default:
       return state;
   }

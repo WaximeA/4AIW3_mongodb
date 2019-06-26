@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import TodoList from './components/Todo/TodoList';
 import MovieList from './components/Movie/MovieListContainer';
+import MovieForm from './components/Movie/MovieFormContainer';
 
 function App() {
   return (
@@ -14,6 +15,8 @@ function App() {
             <TodoList/>
           </div>
           <div className="movielist">
+            <h1>Add new movie</h1>
+            <MovieForm/>
             <h1>Movie list</h1>
             <MovieList/>
           </div>
