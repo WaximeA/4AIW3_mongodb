@@ -23,4 +23,13 @@ router.post('/', (req, res) => {
   });
 });
 
+router.delete("/:title", (req, res) => {
+  Movie.deleteOne(req.params)
+  .then(data => res.status(204).json(data))
+  .catch(error => {
+    res.sendStatus(500).json(error);
+  });
+});
+
+
 module.exports = router;

@@ -1,4 +1,5 @@
 import React from "react";
+import MovieItem from './MovieItem';
 
 class MovieList extends React.Component {
 
@@ -14,9 +15,7 @@ class MovieList extends React.Component {
       {received && <ul>
         {
           movies.map((item, index) =>
-              <li key={index}>
-                {item.title}
-              </li>
+              <MovieItem key={index} movie={item}/>
           )
         }
       </ul>}

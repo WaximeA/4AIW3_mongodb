@@ -2,10 +2,10 @@ const movieReducer = (state = {
   movies: [],
 }, action) => {
   switch (action.type) {
-    case "FETCH_MOVIES_RECEIVER": {
+    case "FETCH_MOVIES_RECEIVED": {
       return {
         ...state,
-        movies: action.payload,
+        movies: action.payload.movies,
         received: true
       };
     }
@@ -14,6 +14,14 @@ const movieReducer = (state = {
         ...state,
         movies: [...state.movies, action.payload.movie]
       }
+    }
+    case "DELETE_MOVIE_REQUESTED": {
+      return {
+      ...state,
+      movies: state.movies.filter(movie => {
+        return movie.title !== action.payload.movie.title;
+      })
+     }
     }
     default:
       return state;

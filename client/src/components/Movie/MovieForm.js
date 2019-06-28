@@ -12,7 +12,7 @@ class MovieForm extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.OnNew(this.state.title);
+    this.props.onNew(this.state.title);
     this.setState({
       title: ""
     });
