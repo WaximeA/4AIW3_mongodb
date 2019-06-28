@@ -1,13 +1,15 @@
-import React from "react";
+import React, {useContext, useCallback} from "react";
 import TodoContext from '../../context/TodoContext'
 
-const TodoItemActions = ({ todo }) => <TodoContext.Consumer>
-  {
-      ({changeTodo, deleteTodo}) => <>
-          <button onClick={() => changeTodo(todo)}><span>✔</span></button>
-          <button onClick={() => deleteTodo(todo)}><span>✖</span></button>
+const TodoItemActions = ({ todo }) => {
+      const context = useContext(TodoContext);
+      const handleChange = useCallback(() => context.changeTodo(todo), [context.changeTodo]);
+      const handleDelete = useCallback(() => context.deleteTodo(todo), [context.deleteTodo]);
+
+      return <>
+          <button onClick={handleChange}><span>✔</span></button>
+          <button onClick={handleDelete}><span>✖</span></button>
     </>
-  }
-</TodoContext.Consumer>;
+}
 
 export default TodoItemActions;
