@@ -3,7 +3,7 @@ import TodoItem from "./TodoItem"
 import TodoForm from './TodoForm';
 import TodoContext from '../../context/TodoContext';
 
-const TodoList = (props) =>  {
+const TodoList = () =>  {
   const context = useContext(TodoContext);
 
   useEffect(() => {
@@ -12,7 +12,7 @@ const TodoList = (props) =>  {
 
   return useMemo(() => <ul>
       {
-        this.context.todos.map((item, index) =>
+        context.todos.map((item, index) =>
             <TodoItem key={index} item={item} />
         )
       }
