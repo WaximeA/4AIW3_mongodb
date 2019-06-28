@@ -8,7 +8,7 @@ const TodoList = () =>  {
 
   useEffect(() => {
     context.loadTodos();
-  });
+  }, []);
 
   return useMemo(() => <ul>
       {
