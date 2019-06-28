@@ -1,5 +1,11 @@
 import {createContext} from "react";
 
-export const TodoContext = createContext({
-  todos: []
+const TodoContext = createContext({
+  todos: [],
+  loadTodos: () => {},
+  newTodo: () => {},
+  changeTodo: () => {},
+  deleteTodo: () => {}
 });
+
+export default TodoContext;

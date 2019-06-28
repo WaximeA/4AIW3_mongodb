@@ -1,10 +1,12 @@
 import React from "react";
 import TodoItem from "./TodoItem"
 import TodoForm from './TodoForm';
-import {TodoContext} from '../../context/TodoContext';
+import TodoContext from '../../context/TodoContext';
 
 class TodoList extends React.Component {
-  handleNew = (text) => {
+  static contextType = TodoContext;
+
+  newTodo = (text) => {
     const newTodo = {text, checked: false};
 
     // set new state to handle the rendering and add newTodo at the end of state
@@ -13,7 +15,7 @@ class TodoList extends React.Component {
     })
   }
 
-  handleSelect = (item) => {
+  changeTodo = (item) => {
     this.setState({
       todos: this.state.todos.map(todo => {
         if (todo.text === item.text) {
@@ -24,8 +26,7 @@ class TodoList extends React.Component {
       })
     })
   }
-
-  handleDelete = (item) => {
+  deleteTodo = (item) => {
     this.setState({
       todos: this.state.todos.filter(todo => {
         return todo.text !== item.text;
@@ -33,16 +34,16 @@ class TodoList extends React.Component {
     })
   }
 
+  componentDidMount() {
+    this.context.loadTodos();
+  }
+
   render() {
     return <TodoContext.Consumer >
       {(state) => <ul>
         {
           state.todos.map((item, index) =>
-              <TodoItem
-                  key={index} item={item}
-                  onSelect={this.handleSelect}
-                  onDelete={this.handleDelete}
-              />
+              <TodoItem key={index} item={item} />
           )
         }
       </ul>}
