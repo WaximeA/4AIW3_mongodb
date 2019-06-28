@@ -1,31 +1,26 @@
-import React from "react";
+import React, {useState, useContext} from "react";
+import TodoContext from '../../context/TodoContext'
 
-class TodoForm extends React.Component {
+const TodoForm = () => {
 
-  state = {
-    text: "",
+  const [text, setText] = useState('');
+  const context = useContext(TodoContext);
+
+  const handleChange = (event) => {
+    setText(event.target.value);
   }
 
-  handleChange = (event) => {
-    this.setState({text: event.target.value});
-  }
-
-  handleSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    this.setState({
-      text: ""
-    });
-    this.props.onNew(this.state.text);
-
+    context.newTodo(text);
+    setText('');
     return false;
   }
 
-  render () {
-    return <form onSubmit={this.handleSubmit}>
-      <input type="text" onChange={this.handleChange} value={this.state.text}/>
-      <button type="submit" value="Add">Add</button>
-    </form>
-  }
+  return <form onSubmit={handleSubmit}>
+    <input type="text" onChange={handleChange} value={text}/>
+    <button type="submit" value="Add">Add</button>
+  </form>
 }
 
 export default TodoForm;

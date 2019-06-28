@@ -1,6 +1,7 @@
 import React from 'react';
 import TodoContext from './TodoContext';
 import TodoList from '../components/Todo/TodoList';
+import TodoForm from '../components/Todo/TodoForm';
 
 class TodoProvider extends React.Component {
   state = {
@@ -43,6 +44,7 @@ class TodoProvider extends React.Component {
 
   render() {
     return <TodoContext.Provider value={this.state}>
+      <TodoForm/>
       <TodoList/>
     </TodoContext.Provider>
   }
