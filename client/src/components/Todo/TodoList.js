@@ -1,15 +1,9 @@
 import React from "react";
 import TodoItem from "./TodoItem"
 import TodoForm from './TodoForm';
+import {TodoContext} from '../../context/TodoContext';
 
 class TodoList extends React.Component {
-  state = {
-    todos: [
-      {text: "Todo 1"},
-      {text: "Todo 2", checked: true}
-    ]
-  }
-
   handleNew = (text) => {
     const newTodo = {text, checked: false};
 
@@ -40,16 +34,20 @@ class TodoList extends React.Component {
   }
 
   render() {
-    return <>
-      <TodoForm onNew={this.handleNew}/>
-      <ul>
+    return <TodoContext.Consumer >
+      {(state) => <ul>
         {
-          this.state.todos.map((item, index) =>
-              <TodoItem key={index} item={item} onSelect={this.handleSelect} onDelete={this.handleDelete}/>
+          state.todos.map((item, index) =>
+              <TodoItem
+                  key={index} item={item}
+                  onSelect={this.handleSelect}
+                  onDelete={this.handleDelete}
+              />
           )
         }
-      </ul>
-   </>;
+      </ul>}
+    </TodoContext.Consumer>
+
   }
 }
 
